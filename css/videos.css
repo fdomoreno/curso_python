@@ -1,0 +1,12 @@
+.contenido-videos{
+    min-height: 86vh;
+    width: 100%;
+}
+.video{
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+iframe{
+    margin: auto;
+}
