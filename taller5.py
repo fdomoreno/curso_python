@@ -1,9 +1,39 @@
 import locale
 locale.setlocale(locale.LC_ALL, '')
-
-#UNIR TALLER 2 y TALLER 3 en este con funciones y ciclos
-
 SMMLV=1160000
+
+def derecho_paseo(estado,hijos):
+    if (estado.upper()=="CASADO") and (hijos>0):
+        print("El empleado tiene derecho a paseo en diciembre")
+    else:
+        print("El empleado NO tiene derecho a paseo en diciembre")
+        
+def bono_pre_pension(edad, sueldo_b):
+    if edad>=55:
+        derecho_bono_prepension=sueldo_b*0.05
+    else:
+        derecho_bono_prepension=0
+    print(f"El empleado recibe: ${round(derecho_bono_prepension,2):,.2f} COP por concepto de bono de prepensión")
+    return derecho_bono_prepension
+
+def comision(sueldo_b):
+    if(sueldo_b>=1000000 and sueldo_b<=1500000):
+        derecho_comision=sueldo_b*0.02
+    elif(sueldo_b>1500000 and sueldo_b<=2000000):
+        derecho_comision=sueldo_b*0.05
+    else:
+        derecho_comision=0
+    print(f"El empleado recibe: ${round(derecho_comision,2):,.2f} COP por concepto de comisión")
+    return derecho_comision
+
+def derecho_bono_alimento(dias_lab,sueldo_b):
+    if(dias_lab>20 and sueldo_b<1000000):
+        bono=SMMLV*1.5
+    else:
+        bono=0
+    print(f"El empleado recibe: ${round(bono,2):,.2f} COP por concepto de bono de alimentación")
+    return bono
+
 print("====BIENVENIDO AL FORMULARIO DE DATOS BÁSICOS DEL CURSO DE FUNDAMENTOS DE PROGRAMACIÓN EN PYTHON====")
 identificacion= input("Por favor ingresar el número de identificacion: ")
 nombres= input("Por favor ingresar el nombre: ")
@@ -29,28 +59,12 @@ print("Teléfono: ", telefono)
 print("Edad: ",edad,"años")
 print("Estado civil: ", estado_civil)
 print("Número de hijos: ", numero_hijos)
-if (estado_civil.upper()=="CASADO") and (numero_hijos>0):
-    print("El empleado tiene derecho a paseo en diciembre")
 print("Estatura: ",estatura,"cm")
 print("Fecha de contratación: ", fecha_contratacion)
 print("Sueldo básico: ", locale.format_string('%.2f', float(sueldo_basico), grouping=True, monetary=True), "COP")
 print("Días laborados: ",dias_laborados)
-if edad>=55:
-    bono_prepension=sueldo_basico*0.05
-    print(f"El empleado recibe: ${round(bono_prepension,2):,.2f} COP por concepto de bono de prepensión")
-else:
-    bono_prepension=0
-if(sueldo_basico>=1000000 and sueldo_basico<=1500000):
-    comision=sueldo_basico*0.02
-    print(f"El empleado recibe: ${round(comision,2):,.2f} COP por concepto de comisión")
-elif(sueldo_basico>1500000 and sueldo_basico<=2000000):
-    comision=sueldo_basico*0.05
-    print(f"El empleado recibe: ${round(comision,2):,.2f} COP por concepto de comisión")
-else:
-    comision=0
-if(dias_laborados>20 and sueldo_basico<1000000):
-    bono_alimentacion=SMMLV*1.5
-    print(f"El empleado recibe: ${round(bono_alimentacion,2):,.2f} COP por concepto de bono de alimentación")
-else:
-    bono_alimentacion=0
-print(f"El empleado devenga en total: ${round(sueldo_basico+bono_alimentacion+comision+bono_prepension,2):,.2f} COP")
+derecho_paseo(estado_civil,numero_hijos)
+bono_prepension=bono_pre_pension(edad,sueldo_basico)
+derecho_a_comision=comision(sueldo_basico)
+bono_alimentacion=derecho_bono_alimento(dias_laborados, sueldo_basico)
+print(f"El empleado devenga en total: ${round(sueldo_basico+bono_alimentacion+derecho_a_comision+bono_prepension,2):,.2f} COP")
