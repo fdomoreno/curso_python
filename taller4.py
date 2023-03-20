@@ -3,12 +3,12 @@ Ejercicios:
 
 #Ejercicio 1: Crear un bucle que cuente todos los números pares hasta el 100 (ciclo for).
 
-#Ejercicio 2: haz una tabla de multiplicar utilizando el ciclo for (ciclo for).
+#Ejercicio 2: Haz una tabla de multiplicar utilizando el ciclo for (ciclo for).
 
-#Ejercicio 3: escribir un programa que pregunte al usuario su edad y muestre por pantalla todos los años
+#Ejercicio 3: Escribir un programa que pregunte al usuario su edad y muestre por pantalla todos los años
 que ha cumplido (desde 1 hasta su edad) (ciclo for).
 
-#Ejercicio 4: Escribir un programa que pida al usuario un número entero positivo y muestr en pantalla
+#Ejercicio 4: Escribir un programa que pida al usuario un número entero positivo y muestre en pantalla
 todos los números impares desde 1 hasta ese número separados por comas.
 
 #Ejercicio 5: Encuentra la suma de todos los números pares del 1 al 100 (ciclo for).
@@ -41,21 +41,51 @@ opciones = ["1","2","3","4","5"]
 
 def contar_pares_a_cien():
     print(f"{bold_color.BOLD}====INICIO ALGORITMO: Números pares hasta 100===={bold_color.END}\n")
+    cantidad_pares=0
+    for i in range(1,101,1):
+        if i % 2 == 0:
+            cantidad_pares+=1
+        #print(f"{cantidad_pares} en {i}")
+    print(f"Cantidad de números pares de 1 a 100= {bold_color.BOLD}{bold_color.RED}{cantidad_pares}{bold_color.END}")
     print(f"\n{bold_color.BOLD}========FIN ALGORITMO======={bold_color.END}\n")
+
 def tabla_multiplicar():
     print(f"{bold_color.BOLD}========INICIO ALGORITMO: Tabla de multiplicar======={bold_color.END}\n")
+    numero = input("Ingrese el número del cual quiere mostrar la tabla de multiplicar: ")
+    numero = int(numero)
+    for i in range(1,11,1):
+        print(f"{i} x {numero} = {bold_color.BOLD}{bold_color.RED}{i*numero}{bold_color.END}")
     print(f"\n{bold_color.BOLD}========FIN ALGORITMO======={bold_color.END}\n")
 
 def anios_cumplidos():
     print(f"{bold_color.BOLD}========INICIO ALGORITMO: Años cumplidos======={bold_color.END}\n")
+    edad = input("Ingrese su edad: ")
+    edad = int(edad)
+    anio_actual=2023
+    anio_inicial=anio_actual-edad
+    for i in range(anio_inicial,anio_actual+1):
+        print(f"En el año {bold_color.BOLD}{bold_color.RED}{i}{bold_color.END} usted cumplió {bold_color.BOLD}{bold_color.RED}{(i-anio_inicial)+1}{bold_color.END}")
     print(f"\n{bold_color.BOLD}========FIN ALGORITMO======={bold_color.END}\n")
 
 def numeros_impares():
     print(f"{bold_color.BOLD}========INICIO ALGORITMO: Presentación de números impares======={bold_color.END}\n")
+    numero = input("Ingrese un número entero positivo: ")
+    numero = int(numero)
+    for i in range(1,numero+1,2):
+        if i < numero:
+            print(i, end=",")
+        else:
+            print(i)
     print(f"\n{bold_color.BOLD}========FIN ALGORITMO======={bold_color.END}\n")
 
 def suma_pares():
     print(f"{bold_color.BOLD}========INICIO ALGORITMO: Suma números pares hasta 100======={bold_color.END}\n")
+    suma_pares=0
+    for i in range(1,101,1):
+        if i % 2 == 0:
+            suma_pares+=i
+        #print(f"{cantidad_pares} en {i}")
+    print(f"Total de la suma de números pares de 1 a 100= {bold_color.BOLD}{bold_color.RED}{suma_pares}{bold_color.END}")
     print(f"\n{bold_color.BOLD}========FIN ALGORITMO======={bold_color.END}\n")
 
 switch_algoritmos = {
